@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Acceso al formulario - Colegio YOHUALA</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;background:#f7f7f7}
+    .card{background:#fff;padding:24px;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.08);width:340px;text-align:center}
+    img.logo{max-width:200px;margin-bottom:16px}
+    input{width:100%;padding:10px;margin-top:8px;margin-bottom:12px;border:1px solid #ddd;border-radius:6px}
+    button{width:100%;padding:10px;border:0;border-radius:6px;background:#0b74de;color:#fff;font-weight:600;cursor:pointer}
+    .err{color:#c0392b;font-size:14px;height:18px}
+    .hint{font-size:12px;color:#666;margin-top:6px}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="logo.jpg" alt="Logo Colegio YOHUALA" class="logo" />
+    <h3>Introduce la contraseña</h3>
+    <input id="pw" type="password" placeholder="Contraseña" autofocus />
+    <div class="err" id="err"></div>
+    <button id="go">Entrar</button>
+    <div class="hint">Colegio YOHUALA - Preescolar y Primaria</div>
+  </div>
+
+  <script>
+    const PASSWORD = "YOHUALA.2025";
+    const FORM_URL = "https://forms.gle/tGS2vVU8gA16rZtf6";
+
+    function checkAndGo() {
+      const v = document.getElementById('pw').value;
+      if (v === PASSWORD) {
+        window.location.href = FORM_URL;
+      } else {
+        document.getElementById('err').textContent = "Contraseña incorrecta";
+      }
+    }
+
+    document.getElementById('go').addEventListener('click', checkAndGo);
+    document.getElementById('pw').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') checkAndGo();
+    });
+  </script>
+</body>
+</html>
